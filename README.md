@@ -1,13 +1,20 @@
-# DesafioCieloFrontend
+# Desafio Back-end
 
-#Repositorio Front-end: https://github.com/phbritoo/Cielo-front-end
+### Repositórios
+* [Front-End] - Repositório front-end
+* [Back-End] - Repositório back-end
 
-#Repositorio Back-end: https://github.com/phbritoo/Cielo-back-end
+### Instalação
+Após baixar os dois repositórios,
 
-1) Baixar os dois repositorios - Cielo-back-end e Cielo-front-end 
+Executar no projeto Front-end:
+```sh
+$ npm install
+$ ng build
+```
+Por fim, no projeto Back-end, executar o Spring Boot.
 
-2) No repositorio de front-end:
-     2.1)Executar: npm install
-     2.2)Por fim:  ng build
+   [Front-End]: <https://github.com/phbritoo/Cielo-front-end>
+   [Back-End]: <https://github.com/phbritoo/Cielo-back-end>
 
-3) No repositorio de back-end, basta executar o Spring boot e acessar a aplicação na web. (localhost:8080)
+
