@@ -1,0 +1,18 @@
+<h1>Extrato da conta corrente</h1>
+
+<mat-toolbar  *ngIf="extrato">
+  
+    <span class="example-fill-remaining-space">
+      <h5 >Qtd. de lançamentos</h5>
+      <span id="numero">{{extrato.totalControleLancamento.quantidadeLancamentos}}</span>
+    </span>
+    <span>
+      <h5>Valor de lançamentos</h5> 
+      <span id="numero">{{extrato.totalControleLancamento.valorLancamentos}}</span>
+    </span>
+ 
+</mat-toolbar>
+<br>
+<div *ngIf="listaControleLancamento">
+  <app-lancamentos-list [lancamentos]="listaControleLancamento"></app-lancamentos-list>
+</div>

@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+    background-color:rgba(4, 101, 180, 0.404);
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+  }
+td{
+ flex: 1;
+ color: white;
+ border: 1px solid black;
+ text-align: center;
+}
+th{
+  color: white;
+  border: 1px solid black;
+}
+h3{
+  font-size: 140%;
+  text-align: center;
+}

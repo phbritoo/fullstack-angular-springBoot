@@ -1,0 +1,26 @@
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  h1 {
+    color: rgba(4, 101, 180, 0.404);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200%;
+    text-align: center;
+  }
+  
+  h5 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  mat-toolbar{
+    background-color: white;
+  }
+  #numero{
+    color: rgba(4, 101, 180, 0.404);
+  }
+
+
+  
