@@ -1,0 +1,16 @@
+package br.com.colen.regras;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+public class ImpedimentoTest {
+
+ @Test
+ public void testImpedido() {
+       Impedimento impedimento = new Impedimento();
+       boolean impedido = impedimento.estaImpedido(105.10, 105.0);
+       assertTrue(impedido);
+ }
+ 
+}
