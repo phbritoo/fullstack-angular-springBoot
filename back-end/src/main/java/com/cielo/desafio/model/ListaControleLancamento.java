@@ -1,8 +1,8 @@
-
 package com.cielo.desafio.model;
-
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -27,16 +27,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "dateLancamentoContaCorrenteCliente",
     "dateEfetivaLancamento"
 })
-
-//Lista que foi chamada da classe extrato, e contem atributos relacionadaos ao Extrato com seus respectivos gets and sets
 public class ListaControleLancamento {
-	
-	//Annotation referenciando o atributo conforme está no Json (ExtratoContaController)
+
     @JsonProperty("lancamentoContaCorrenteCliente")
-    
-    //Uma classe aonde contem uma outro objeto dentro da classe Extrato
     private LancamentoConta lancamentoConta;
-    
     @JsonProperty("dataEfetivaLancamento")
     private String dataEfetivaLancamento;
     @JsonProperty("dataLancamentoContaCorrenteCliente")
@@ -56,7 +50,7 @@ public class ListaControleLancamento {
     @JsonProperty("numeroSufixoCNPJ")
     private String numeroSufixoCNPJ;
     @JsonProperty("valorLancamentoRemessa")
-    private Long valorLancamentoRemessa;
+    private Double valorLancamentoRemessa;
     @JsonProperty("dateLancamentoContaCorrenteCliente")
     private Long dateLancamentoContaCorrenteCliente;
     @JsonProperty("dateEfetivaLancamento")
@@ -64,13 +58,13 @@ public class ListaControleLancamento {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("lancamentoConta")
-    public LancamentoConta getLancamentosConta() {
+    @JsonProperty("lancamentoContaCorrenteCliente")
+    public LancamentoConta getLancamentoContaCorrenteCliente() {
         return lancamentoConta;
     }
 
-    @JsonProperty("lancamentoConta")
-    public void setLancamentosContaCorrenteCliente(LancamentoConta lancamentoConta) {
+    @JsonProperty("lancamentoContaCorrenteCliente")
+    public void setLancamentoConta(LancamentoConta lancamentoConta) {
         this.lancamentoConta = lancamentoConta;
     }
 
@@ -165,12 +159,12 @@ public class ListaControleLancamento {
     }
 
     @JsonProperty("valorLancamentoRemessa")
-    public Long getValorLancamentoRemessa() {
+    public Double getValorLancamentoRemessa() {
         return valorLancamentoRemessa;
     }
 
     @JsonProperty("valorLancamentoRemessa")
-    public void setValorLancamentoRemessa(Long valorLancamentoRemessa) {
+    public void setValorLancamentoRemessa(Double valorLancamentoRemessa) {
         this.valorLancamentoRemessa = valorLancamentoRemessa;
     }
 

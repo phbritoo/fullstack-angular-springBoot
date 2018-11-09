@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\paulo.h.santana\Documents\Cielo-back-end\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\215591787.index
-\grafica\src\main\java
-C:\Users\paulo.h.santana\Documents\Cielo-back-end\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2212480562.index
-\grafica\src\main\java
