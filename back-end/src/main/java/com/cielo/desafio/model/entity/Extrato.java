@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.cielo.desafio.model.ListaControleLancamento;
+import com.cielo.desafio.model.ListaLancamento;
 import com.cielo.desafio.model.TotalControleLancamento;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -32,7 +32,7 @@ public class Extrato {
     
     //Uma classe aonde contem uma lista dentro da classe Extrato
     @JsonProperty("listaControleLancamento")
-    private List<ListaControleLancamento> listaControleLancamento = null;
+    private List<ListaLancamento> listaControleLancamento = null;
     
     @JsonProperty("indice")
     private Long indice;
@@ -54,12 +54,12 @@ public class Extrato {
     }
 
     @JsonProperty("listaControleLancamento")
-    public List<ListaControleLancamento> getListaControleLancamento() {
+    public List<ListaLancamento> getListaControleLancamento() {
         return listaControleLancamento;
     }
 
     @JsonProperty("listaControleLancamento")
-    public void setListaControleLancamento(List<ListaControleLancamento> listaControleLancamento) {
+    public void setListaControleLancamento(List<ListaLancamento> listaControleLancamento) {
         this.listaControleLancamento = listaControleLancamento;
     }
 

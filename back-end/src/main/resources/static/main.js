@@ -197,7 +197,7 @@ module.exports = ".example-fill-remaining-space {\r\n    /* This fills the remai
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Extrato da conta corrente</h1>\r\n\r\n<mat-toolbar  *ngIf=\"extrato\">\r\n\r\n    <span class=\"example-fill-remaining-space\">\r\n      <h5 >Qtd. de lançamentos</h5>\r\n      <span id=\"numero\">{{extrato.totalControleLancamento.quantidadeLancamentos}}</span>\r\n    </span>\r\n    <span>\r\n      <h5>Valor de lançamentos</h5>\r\n      <span id=\"numero\">{{extrato.totalControleLancamento.valorLancamentos}}</span>\r\n    </span>\r\n\r\n</mat-toolbar>\r\n<br>\r\n<div *ngIf=\"listaControleLancamento\">\r\n  <app-lancamentos-list [lancamentos]=\"listaControleLancamento\"></app-lancamentos-list>\r\n</div>\r\n"
+module.exports = " <h1>Extrato da conta corrente</h1>\r\n\r\n<!-- <mat-toolbar  >\r\n\r\n    <span class=\"example-fill-remaining-space\">\r\n      <h5 >Qtd. de lançamentos</h5>\r\n      <span id=\"numero\">{{}}</span>\r\n    </span>\r\n    <span>\r\n      <h5>Valor de lançamentos</h5>\r\n      <span id=\"numero\"></span>\r\n    </span>\r\n\r\n</mat-toolbar>\r\n<br> -->\r\n\r\n<app-lancamentos-list *ngIf=\"extrato\" [lancamentos]=\"extrato.lancamentos\"></app-lancamentos-list>\r\n"
 
 /***/ }),
 
@@ -232,36 +232,13 @@ var ExtratoContaComponent = /** @class */ (function () {
         var _this = this;
         this.extratoContaService.get().subscribe(function (data) {
             _this.extrato = data;
-            _this.listaControleLancamento = _this.extrato.listaControleLancamento.map(function (lancamento) {
-                return {
-                    codigoIdentificadorUnico: parseInt(lancamento.codigoIdentificadorUnico, 10),
-                    nomeBanco: lancamento.nomeBanco,
-                    dataEfetivaLancamento: lancamento.dataEfetivaLancamento,
-                    valorLancamentoRemessa: lancamento.valorLancamentoRemessa,
-                    descricaoGrupoPagamento: lancamento.descricaoGrupoPagamento,
-                    quantidadeLancamentoRemessa: lancamento.quantidadeLancamentoRemessa,
-                    numeroEvento: lancamento.numeroEvento,
-                    dataLancamentoContaCorrenteCliente: lancamento.dataLancamentoContaCorrenteCliente,
-                    lancamentoContaCorrenteCliente: {
-                        nomeSituacaoRemessa: lancamento.lancamentoContaCorrenteCliente.nomeSituacaoRemessa,
-                        nomeTipoOperacao: lancamento.lancamentoContaCorrenteCliente.nomeTipoOperacao,
-                        numeroRemessaBanco: lancamento.lancamentoContaCorrenteCliente.numeroRemessaBanco,
-                        dadosDomicilioBancario: {
-                            codigoBanco: lancamento.lancamentoContaCorrenteCliente.dadosDomicilioBancario.codigoBanco,
-                            numeroAgencia: lancamento.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroAgencia,
-                            numeroContaCorrente: lancamento.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroContaCorrente,
-                        },
-                    },
-                    dadosBancarios: lancamento.nomeBanco + " Ag " + lancamento.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroAgencia + " CC " + lancamento.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroContaCorrente
-                };
-            });
         });
     };
     ExtratoContaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-extrato-conta',
             template: __webpack_require__(/*! ./extrato-conta.component.html */ "./src/app/extrato-conta/extrato-conta.component.html"),
-            styles: [__webpack_require__(/*! ./extrato-conta.component.css */ "./src/app/extrato-conta/extrato-conta.component.css")],
+            styles: [__webpack_require__(/*! ./extrato-conta.component.css */ "./src/app/extrato-conta/extrato-conta.component.css")]
         }),
         __metadata("design:paramtypes", [_shared_extrato_conta_service_extrato_conta_service__WEBPACK_IMPORTED_MODULE_1__["ExtratoContaService"]])
     ], ExtratoContaComponent);
@@ -290,7 +267,7 @@ module.exports = "table {\r\n    width: 100%;\r\n    background-color:rgba(4, 10
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "  <table mat-table [dataSource]=\"dataSource\" class=\"highlight\">\r\n    <ng-container matColumnDef=\"dataEfetivaLancamento\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3> Data do Lançamento </h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dataEfetivaLancamento}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"valorLancamentoRemessa\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3> Valor Final </h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.valorLancamentoRemessa | currency:'BRL'}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lancamentoContaCorrenteCliente.nomeTipoOperacao\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3> Descrição </h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.lancamentoContaCorrenteCliente.nomeTipoOperacao}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lancamentoContaCorrenteCliente.numeroRemessaBanco\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Número da Remessa</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.lancamentoContaCorrenteCliente.numeroRemessaBanco}}\r\n      </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"lancamentoContaCorrenteCliente.nomeSituacaoRemessa\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Situação</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.lancamentoContaCorrenteCliente.nomeSituacaoRemessa}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"dataLancamentoContaCorrenteCliente\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Data de Confirmação</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dataLancamentoContaCorrenteCliente}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"dadosBancarios\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Dados Bancários</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dadosBancarios}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>"
+module.exports = "  <table mat-table [dataSource]=\"dataSource\" class=\"highlight\">\r\n    <ng-container matColumnDef=\"dataLancamento\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3> Data do Lançamento </h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dataLancamento}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"valorFinal\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3> Valor Final </h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.valorFinal | currency:'BRL'}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"descricao\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3> Descrição </h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.descricao}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"numero\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Número da Remessa</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.numero}}\r\n      </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"situacao\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Situação</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.situacao}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"dataConfirmacao\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Data de Confirmação</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dataConfirmacao}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"dadosBancarios\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <h3>Dados Bancários</h3>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dataBank}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n"
 
 /***/ }),
 
@@ -305,6 +282,7 @@ module.exports = "  <table mat-table [dataSource]=\"dataSource\" class=\"highlig
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LancamentosListComponent", function() { return LancamentosListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -315,26 +293,38 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var LancamentosListComponent = /** @class */ (function () {
     function LancamentosListComponent() {
-        this.displayedColumns = ['dataEfetivaLancamento', 'lancamentoContaCorrenteCliente.nomeTipoOperacao',
-            'lancamentoContaCorrenteCliente.numeroRemessaBanco', 'lancamentoContaCorrenteCliente.nomeSituacaoRemessa',
-            'dataLancamentoContaCorrenteCliente', 'dadosBancarios', 'valorLancamentoRemessa'];
+        this.isLoadingResults = true;
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"]();
+        this.displayedColumns = [
+            'dataLancamento',
+            'descricao',
+            'numero',
+            'situacao',
+            'dataConfirmacao',
+            'dadosBancarios',
+            'valorFinal'
+        ];
     }
     LancamentosListComponent.prototype.ngOnInit = function () {
-        this.dataSource = this.lancamentos;
-        console.log(this.dataSource);
+        this.dataSource.data = this.lancamentos;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], LancamentosListComponent.prototype, "lancamentos", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"])
+    ], LancamentosListComponent.prototype, "paginator", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"])
+    ], LancamentosListComponent.prototype, "sort", void 0);
     LancamentosListComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-lancamentos-list',
-            template: __webpack_require__(/*! ./lancamentos-list.component.html */ "./src/app/lancamentos-list/lancamentos-list.component.html"),
-            styles: [__webpack_require__(/*! ./lancamentos-list.component.css */ "./src/app/lancamentos-list/lancamentos-list.component.css")]
-        }),
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({ selector: 'app-lancamentos-list', template: __webpack_require__(/*! ./lancamentos-list.component.html */ "./src/app/lancamentos-list/lancamentos-list.component.html"), styles: [__webpack_require__(/*! ./lancamentos-list.component.css */ "./src/app/lancamentos-list/lancamentos-list.component.css")] }),
         __metadata("design:paramtypes", [])
     ], LancamentosListComponent);
     return LancamentosListComponent;

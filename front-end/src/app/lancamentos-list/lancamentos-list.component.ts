@@ -1,55 +1,34 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Lancamento} from '../shared/model/lancamento-model';
+import {MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
+import {merge, Observable, of as observableOf} from 'rxjs';
+import {catchError, map, startWith, switchMap, delay} from 'rxjs/operators';
 
-export interface DadosDomicilioBancario {
-  codigoBanco: number;
-  numeroAgencia: number;
-  numeroContaCorrente: string;
-}
-
-export interface LancamentoContaCorrenteCliente {
-  numeroRemessaBanco: any;
-  nomeSituacaoRemessa: string;
-  dadosDomicilioBancario: DadosDomicilioBancario;
-  nomeTipoOperacao: string;
-  dadosAnaliticoLancamentoFinanceiroCliente: any[];
-}
-
-export interface ListaControleLancamento {
-  lancamentoContaCorrenteCliente: LancamentoContaCorrenteCliente;
-  dataEfetivaLancamento: string;
-  dataLancamentoContaCorrenteCliente: string;
-  numeroEvento: number;
-  descricaoGrupoPagamento: string;
-  codigoIdentificadorUnico: string;
-  nomeBanco: string;
-  quantidadeLancamentoRemessa: number;
-  numeroRaizCNPJ: string;
-  numeroSufixoCNPJ: string;
-  valorLancamentoRemessa: number;
-  dateLancamentoContaCorrenteCliente: any;
-  dateEfetivaLancamento: any;
-  dadosBancarios: string;
-}
-
-@Component({
-  selector: 'app-lancamentos-list',
-  templateUrl: './lancamentos-list.component.html',
-  styleUrls: ['./lancamentos-list.component.css']
-})
+@Component({selector: 'app-lancamentos-list',
+ templateUrl: './lancamentos-list.component.html',
+ styleUrls: ['./lancamentos-list.component.css']})
 export class LancamentosListComponent implements OnInit {
+  @Input()
+  lancamentos: Lancamento[];
+  isLoadingResults = true;
 
-  @Input() lancamentos: ListaControleLancamento[];
-// Colunas que serão mostradas na tabela
-  dataSource: ListaControleLancamento[];
-  displayedColumns: string[] = ['dataEfetivaLancamento', 'lancamentoContaCorrenteCliente.nomeTipoOperacao'
-    , 'lancamentoContaCorrenteCliente.numeroRemessaBanco', 'lancamentoContaCorrenteCliente.nomeSituacaoRemessa',
-    'dataLancamentoContaCorrenteCliente',  'dadosBancarios', 'valorLancamentoRemessa'];
-  constructor() { }
+  dataSource = new MatTableDataSource < Lancamento > ();
+  @ViewChild(MatPaginator)paginator: MatPaginator;
+  @ViewChild(MatSort)sort: MatSort;
+
+  displayedColumns: string[] = [
+    'dataLancamento',
+    'descricao',
+    'numero',
+    'situacao',
+    'dataConfirmacao',
+    'dadosBancarios',
+    'valorFinal'
+  ];
+  constructor() {}
 
   ngOnInit() {
-    this.dataSource = this.lancamentos;
-    console.log(this.dataSource);
+    this.dataSource.data = this.lancamentos;
 
   }
-
 }

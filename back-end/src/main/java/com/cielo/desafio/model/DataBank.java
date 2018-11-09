@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "numeroAgencia",
     "numeroContaCorrente"
 })
-public class DadosBancarios {
+public class DataBank {
 	  @JsonProperty("codigoBanco")
 	    private Long codigoBanco;
 	    @JsonProperty("numeroAgencia")

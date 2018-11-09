@@ -2,6 +2,7 @@ package com.cielo.desafio.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,7 +27,7 @@ public class LancamentoConta{
     @JsonProperty("nomeSituacaoRemessa")
     private String nomeSituacaoRemessa;
     @JsonProperty("dadosDomicilioBancario")
-    private DadosBancarios dadosDomicilioBancario;
+    private DataBank dataBank;
     @JsonProperty("nomeTipoOperacao")
     private String nomeTipoOperacao;
     @JsonProperty("dadosAnaliticoLancamentoFinanceiroCliente")
@@ -55,13 +56,13 @@ public class LancamentoConta{
     }
 
     @JsonProperty("dadosDomicilioBancario")
-    public DadosBancarios getDadosDomicilioBancario() {
-        return dadosDomicilioBancario;
+    public DataBank getDataBank() {
+        return dataBank;
     }
 
     @JsonProperty("dadosDomicilioBancario")
-    public void setDadosDomicilioBancario(DadosBancarios dadosDomicilioBancario) {
-        this.dadosDomicilioBancario = dadosDomicilioBancario;
+    public void setDataBank(DataBank dataBank) {
+        this.dataBank = dataBank;
     }
 
     @JsonProperty("nomeTipoOperacao")

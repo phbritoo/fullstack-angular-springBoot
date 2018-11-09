@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 
 //Lista que foi chamada da classe extrato, e contem atributos relacionadaos ao Extrato com seus respectivos gets and sets
-public class ListaControleLancamento {
+public class ListaLancamento {
 	
 	//Annotation referenciando o atributo conforme está no Json (ExtratoContaController)
     @JsonProperty("lancamentoContaCorrenteCliente")
@@ -56,23 +56,21 @@ public class ListaControleLancamento {
     @JsonProperty("numeroSufixoCNPJ")
     private String numeroSufixoCNPJ;
     @JsonProperty("valorLancamentoRemessa")
-    private Long valorLancamentoRemessa;
+    private Double valorLancamentoRemessa;
     @JsonProperty("dateLancamentoContaCorrenteCliente")
     private Long dateLancamentoContaCorrenteCliente;
     @JsonProperty("dateEfetivaLancamento")
     private Long dateEfetivaLancamento;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("lancamentoConta")
-    public LancamentoConta getLancamentosConta() {
-        return lancamentoConta;
-    }
-
-    @JsonProperty("lancamentoConta")
-    public void setLancamentosContaCorrenteCliente(LancamentoConta lancamentoConta) {
-        this.lancamentoConta = lancamentoConta;
-    }
+    @JsonProperty("lancamentoContaCorrenteCliente")
+    public LancamentoConta getLancamentoConta() {
+		return lancamentoConta;
+	}
+    @JsonProperty("lancamentoContaCorrenteCliente")
+	public void setLancamentoConta(LancamentoConta lancamentoConta) {
+		this.lancamentoConta = lancamentoConta;
+	}
 
     @JsonProperty("dataEfetivaLancamento")
     public String getDataEfetivaLancamento() {
@@ -165,12 +163,12 @@ public class ListaControleLancamento {
     }
 
     @JsonProperty("valorLancamentoRemessa")
-    public Long getValorLancamentoRemessa() {
+    public Double getValorLancamentoRemessa() {
         return valorLancamentoRemessa;
     }
 
     @JsonProperty("valorLancamentoRemessa")
-    public void setValorLancamentoRemessa(Long valorLancamentoRemessa) {
+    public void setValorLancamentoRemessa(Double valorLancamentoRemessa) {
         this.valorLancamentoRemessa = valorLancamentoRemessa;
     }
 
@@ -203,5 +201,4 @@ public class ListaControleLancamento {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
-
 }
