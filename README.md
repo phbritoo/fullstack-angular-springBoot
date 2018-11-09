@@ -1,6 +1,5 @@
 # Desafio FullStack
 A aplicação springboot já possui um build do frontend carregado, ao acessar localhost:8080. Recomendável importar o projeto do backend no Eclipse e o frontend no vscode para melhor experiência.
-<<<<<<< HEAD
 # Necessário
 - Maven 3+
 - Node.js 8+
@@ -16,17 +15,11 @@ $ npm install
 $ npm build
 ```
 ### Back-end
-=======
-
-### Executando o projeto
-Após baixar o repositório,
-Abra o Eclipse e execute o projeto com SpringBoot,depois na pasata do projeto Front-end digite:
->>>>>>> parent of 8a79aea... update readme
 ```sh
-$ npm install
-$ ng build
+$ cd back-end
+$ mvnw clean install
+$ mvnw spring-boot:run
 ```
-Por fim, dê um restart na aplicação do back-end.
 
 ### Configurando uma variavel de ambiente
 Caso ao rodar o "mvnw clean install" der erro, seguir esse passo a passo:
@@ -49,15 +42,4 @@ Teste ponta a ponta:
 ```sh
 $ ng e2e
 ```
-<<<<<<< HEAD
 
-### Testes Back-end
-
-Integração e unitários via Junit
-```sh
-$ mvnw test
-```
-
-
-=======
->>>>>>> parent of 8a79aea... update readme
