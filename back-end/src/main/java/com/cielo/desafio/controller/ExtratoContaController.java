@@ -1,26 +1,33 @@
 package com.cielo.desafio.controller;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import java.io.File;
+import java.io.IOException;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.cielo.desafio.model.entity.Extrato;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.cielo.desafio.object.ExtratoContaObject;
-import com.cielo.desafio.service.ExtratoContaService;
+@RestController
+class ExtratoContaController {
 
-// Controlador aonde se chama o arquivo json
-@RestController 
-@RequestMapping("/api/extratoContaCorrente")
-public class ExtratoContaController {
-
-	@Autowired
-	private ExtratoContaService extratoContaService;
-	
     public ExtratoContaController() {
     }
-
-    @RequestMapping(method= RequestMethod.GET)
-    public ExtratoContaObject extrato() {
-        return extratoContaService.get();
+    // Controlador aonde se chama o arquivo json
+    @GetMapping("/api/extratoContaCorrente")
+    public Extrato extrato() {
+    	
+    	ObjectMapper mapper = new ObjectMapper();
+    	Extrato extrato = new Extrato();
+		try {
+			
+			//Mapea o json para a classe extrato
+			File file =new ClassPathResource(
+				      "lancamento-conta-legado.json").getFile();
+			extrato = mapper.readValue(file, Extrato.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        return extrato;
     }
 
 }
